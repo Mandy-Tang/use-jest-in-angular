@@ -76,7 +76,11 @@ Object.defineProperty(window, 'getComputedStyle', {
 ```
 其中 `test` 只跑一次测试，`test:watch` 可以检测文件变化，跑当前有修改的文件的相关测试。
 
-
+此时，在命令行中运行测试命令，就应该能够顺利把测试跑起来并通过了。如果没有通过，可能是因为我们在 `src/tsconfig.spec.json` 中的 file 配置中有 `test.js` 的配置，这是 Karma 的 setup 文件，删掉这行配置并删除对应的文件，(`src/tsconfig.app.json` 中出现的 `test.js` 也可一并删除)，重新跑一遍测试命令：
+```
+npm run test
+```
+至此，Jest 测试环境就算顺利搭建好了。如果你对代码有洁癖，接下来，你还可以删除 jasmine 的相关代码，将测试全部转为 Jest。
 
 
 # UseJestInAngular
