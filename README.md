@@ -80,7 +80,19 @@ Object.defineProperty(window, 'getComputedStyle', {
 ```
 npm run test
 ```
-至此，Jest 测试环境就算顺利搭建好了。如果你对代码有洁癖，接下来，你还可以删除 jasmine 的相关代码，将测试全部转为 Jest。
+至此，Jest 测试环境就算顺利搭建好了。如果你对代码有洁癖，接下来，你还可以删除 Karma 的相关代码，将测试全部转为 Jest。
+
+## 删除 Karma 相关代码
+- 删除相关依赖包（@types/jasmine @types/jasminewd2 jasmine-core jasmine-spec-reporter 因为在 e2e 测试中有使用所以不能删除）：
+  ```
+  npm uninstall karma karma-chrome-launcher karma-coverage-istanbul-reporter karma-jasmine karma-jasmine-html-reporter
+  ```
+- 删除文件 `src/karma.config.js`
+- 删除 angular.json 中 test 的配置
+- `src/tsconfig.spec.json` 中 `compilerOptions.type` 的配置移除 jasmine, 加上 jest。
+
+
+至此，你已经删除了所有与 Karma 相关的代码。你甚至还能将测试断言换成 jest 的风格。
 
 
 # UseJestInAngular
