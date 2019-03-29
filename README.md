@@ -69,6 +69,14 @@ Object.defineProperty(window, 'getComputedStyle', {
 可以看到这个例子中 mock 了 window 上的对象，这是因为 jsdom 并没有实现所有的 window 上的对象和方法，所以有时我们需要自己给 window 打个补丁。
 在这里 mock `localStorage` 是可选的，如果我们在代码中并没有使用。但是 mock `getComputedStyle` 是必须的，因为 Angular 会检查它在哪个浏览器中执行。如果没有 mock `getComputedStyle`，我们的测试代码将无法执行。
 
+接下来，我们就可以在 package.json 的 script 中配置 test 的命令了：
+```
+"test": "jest",
+"test:watch": "jest --watch",
+```
+其中 `test` 只跑一次测试，`test:watch` 可以检测文件变化，跑当前有修改的文件的相关测试。
+
+
 
 
 # UseJestInAngular
